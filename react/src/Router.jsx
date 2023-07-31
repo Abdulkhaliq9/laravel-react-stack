@@ -52,7 +52,5 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound/>
-  }
-])
 
 export default router;
