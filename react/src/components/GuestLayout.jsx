@@ -1,28 +1,19 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import { useStateContext } from '../contexts/ContextProvider'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function GuestLayout() {
+  const { user, token } = useStateContext();
 
-
-const {user,token} = useStateContext();
-
-if (token) {
-  return <Navigate to="/" />
-  
-}
-
-
+  if (token) {
+    return <Navigate to="/" />;
+  }
 
   return (
-
-  
-    <div id='guestLayout'>
-    <h2>For Guest Users Only</h2>
-     <Outlet/>
+    <div className="login-signup-form animated fadeInDown">
+      <div className="form">
+        <Outlet />
+      </div>
     </div>
-  
-
-    
-  )
+  );
 }
