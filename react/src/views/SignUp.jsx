@@ -8,10 +8,10 @@ export default function SignUp() {
   const emailRef = createRef();
   const passwordRef = createRef();
   const confirmpasswordRef = createRef();
-
+  
   const { setUser, setToken } = useStateContext();
   const [errors, setErrors] = useState(null);
-
+  
   // form validation
   const onSubmit = (ev) => {
     ev.preventDefault();
@@ -21,7 +21,8 @@ export default function SignUp() {
       password: passwordRef.current.value,
       confirm_password: confirmpasswordRef.current.value,
     };
-
+    
+  
     axiosClient
       .post("/signup", payload)
       .then(({ data }) => {
@@ -33,6 +34,7 @@ export default function SignUp() {
         const response = err.response;
         if (response && response.status === 422) {
           setErrors(response.data.errors);
+          console.log(err)
         }
       });
   };
