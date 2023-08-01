@@ -10,10 +10,10 @@ export default function GuestLayout() {
   }
 
   return (
-    <div className="login-signup-form animated fadeInDown">
-      <div className="form">
+    <div className="guestLayout">
+     
         <Outlet />
-      </div>
+     
     </div>
   );
 }

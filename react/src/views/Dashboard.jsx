@@ -1,9 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 
 export default function Dashboard() {
   return (
     <div>
-      <h1>User</h1>
+      <h1>DashBoard</h1>
     </div>
   )
 }
