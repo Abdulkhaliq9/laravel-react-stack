@@ -30,7 +30,7 @@ useEffect(()=>{
   .then(({data})=>{
     setUser(data)
   })
-})
+},[])
 
 
   return (
