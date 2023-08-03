@@ -7,23 +7,25 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
-        $var = "hello";
-        $credentials = $request->validated();
-        if (!Auth::attempt($credentials)) {
+        $creds = $request->validate([
+            'email'=> 'required',
+            'password'=>'required',
+        ]);
+        if(Auth::attempt($creds)){
+            Session::regenerate();
+            return response(get_defined_vars());
+            
+        }
+        else{
             return response([
                 'message' => 'Provided Email address or password is incorrect'
-            ]);
-            
-            $user = Auth::user();
-            
-            $token = $user->createToken(name: 'main')->plainTextToken;
-
-            return response(get_defined_vars());
+            ]); 
         }
     }
     public function signup(SignupRequest $request)
